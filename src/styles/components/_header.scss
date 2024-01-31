@@ -1,0 +1,32 @@
+header {
+	background-color: var(--color-primary);
+	.navbar {
+		height: 7rem;
+		font-size: 1.6rem;
+		color: #fff;
+		ul {
+			height: 100%;
+			list-style: none;
+			display: flex;
+			align-items: center;
+			li {
+				margin: 0 2rem;
+				a {
+					text-decoration: none;
+					text-transform: uppercase;
+					display: inline-block;
+
+					&.active {
+						border-bottom: 2px solid hsl(0, 0%, 85%);
+						color: hsl(0, 0%, 85%) !important;
+					}
+				}
+
+				a:link,
+				a:visited {
+					color: inherit;
+				}
+			}
+		}
+	}
+}

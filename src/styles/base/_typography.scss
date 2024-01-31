@@ -1,0 +1,42 @@
+html,
+body {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	line-height: 1.7;
+}
+
+// text size
+.text-sm {
+	font-size: 1.2rem;
+	letter-spacing: 0.1rem;
+}
+
+.text-md {
+	font-size: 1.4rem;
+	letter-spacing: 0.1rem;
+}
+
+.text-lg {
+	font-size: 1.7rem;
+	letter-spacing: 0.1rem;
+}
+
+.text-xl {
+	font-size: 2rem;
+	letter-spacing: 0.1rem;
+}
+
+.heading-primary {
+	font-size: 4rem;
+	text-transform: uppercase;
+}
+
+.heading-secondary {
+	font-size: 2rem;
+	text-transform: uppercase;
+}
+
+.heading-tertiary {
+	font-size: 1.6rem;
+	text-transform: uppercase;
+}
