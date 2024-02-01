@@ -9,6 +9,7 @@ import { HomeComponent } from './home/home.component';
 import { LessonComponent } from './lesson/lesson.component';
 import { LessonListComponent } from './lesson-list/lesson-list.component';
 import { CoursesService } from './services/courses.service';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
 	declarations: [
@@ -19,7 +20,11 @@ import { CoursesService } from './services/courses.service';
 		LessonComponent,
 		LessonListComponent,
 	],
-	imports: [CommonModule, CoursesRoutingModule],
+	imports: [
+		CommonModule, //
+		CoursesRoutingModule,
+		SharedModule,
+	],
 	providers: [CoursesService],
 })
 export class CoursesModule {}
