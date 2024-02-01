@@ -10,6 +10,7 @@ import { LessonComponent } from './lesson/lesson.component';
 import { LessonListComponent } from './lesson-list/lesson-list.component';
 import { CoursesService } from './services/courses.service';
 import { SharedModule } from '../shared/shared.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
 	declarations: [
@@ -19,6 +20,7 @@ import { SharedModule } from '../shared/shared.module';
 		HomeComponent,
 		LessonComponent,
 		LessonListComponent,
+  PageNotFoundComponent,
 	],
 	imports: [
 		CommonModule, //
