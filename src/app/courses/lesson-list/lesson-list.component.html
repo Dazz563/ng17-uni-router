@@ -1,1 +1,15 @@
-<p>lesson-list works!</p>
+<div class="center-text text-xl m-2">All Lessons</div>
+
+<table class="lessons-table mat-elevation-z7 p-2" *ngIf="lessons && lessons.length">
+	<thead>
+		<th>#</th>
+		<th>Description</th>
+		<th>Duration</th>
+	</thead>
+
+	<tr class="lesson-row cursor-pointer" *ngFor="let lesson of lessons" [routerLink]="['lessons', lesson.seqNo]">
+		<td class="seqno-cell center-text p-1">{{lesson.seqNo}}</td>
+		<td class="description-cell">{{lesson.description}}</td>
+		<td class="duration-cell center-text">{{lesson.duration}}</td>
+	</tr>
+</table>

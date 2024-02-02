@@ -11,6 +11,7 @@ import { LessonListComponent } from './lesson-list/lesson-list.component';
 import { CoursesService } from './services/courses.service';
 import { SharedModule } from '../shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 
 @NgModule({
 	declarations: [
@@ -20,7 +21,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 		HomeComponent,
 		LessonComponent,
 		LessonListComponent,
-  PageNotFoundComponent,
+		PageNotFoundComponent,
+		LessonDetailComponent,
 	],
 	imports: [
 		CommonModule, //
