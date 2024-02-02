@@ -4,6 +4,8 @@ header {
 		height: 7rem;
 		font-size: 1.6rem;
 		color: #fff;
+		display: flex;
+		justify-content: space-between;
 		ul {
 			height: 100%;
 			list-style: none;
@@ -25,6 +27,17 @@ header {
 				a:link,
 				a:visited {
 					color: inherit;
+				}
+
+				.avatar {
+					width: 3.5rem;
+					height: 3.5rem;
+					border-radius: 50%;
+					margin-right: 1rem;
+					// border: 1px solid red;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 				}
 			}
 		}
