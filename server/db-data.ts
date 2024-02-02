@@ -1080,6 +1080,12 @@ export const USERS = {
     email: 'test@angular-university.io',
     password: 'test',
     pictureUrl: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png'
+  },
+  2: {
+    id: 2,
+    email: 'a@a.com',
+    password: 'password',
+    pictureUrl: 'https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png'
   }
 
 };

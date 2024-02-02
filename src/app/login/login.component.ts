@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -13,12 +15,10 @@ export class LoginComponent {
 		password: new FormControl('', [Validators.required, Validators.minLength(6)]),
 	});
 
-	// constructor(private fb: FormBuilder) {}
-
-	// form = this.fb.nonNullable.group({
-	//     email: ['', [ Validators.email]],
-	//     password: ['', [ Validators.minLength(6)]],
-	// });
+	constructor(
+		private auth: AuthService, //
+		private router: Router
+	) {}
 
 	// Login form getters
 	isInvalid(controlName: string): boolean {
@@ -34,6 +34,16 @@ export class LoginComponent {
 	submit() {
 		if (this.loginForm.valid) {
 			console.log(this.loginForm.value);
+			const val = this.loginForm.value;
+
+			this.auth.login(val.email, val.password).subscribe(
+				() => {
+					this.router.navigateByUrl('/courses');
+				},
+				(err) => {
+					alert('Login failed!');
+				}
+			);
 		} else {
 			this.loginForm.markAllAsTouched();
 		}

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
 
 @Component({
 	selector: 'app-root',
@@ -6,6 +7,9 @@ import { Component } from '@angular/core';
 	styleUrl: './app.component.scss',
 })
 export class AppComponent {
-	title = 'ng17-uni-router';
-	hobbies = ['Cooking', 'Sports', 'Reading'];
+	constructor(public auth: AuthService) {}
+
+	logout() {
+		this.auth.logout();
+	}
 }
