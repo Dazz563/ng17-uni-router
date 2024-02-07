@@ -36,6 +36,7 @@
 	.form-control-textarea {
 		height: 100%;
 		border: 1px solid #ccc;
+		border-radius: 0.5rem;
 		padding: 0.5rem 0.7rem;
 		resize: none;
 
@@ -45,6 +46,14 @@
 
 		&::placeholder {
 			color: var(--color-grey-light-4);
+		}
+
+		&.invalid {
+			border-color: rgb(255, 107, 107);
+		}
+
+		&.valid {
+			border-color: #9bf79b;
 		}
 	}
 

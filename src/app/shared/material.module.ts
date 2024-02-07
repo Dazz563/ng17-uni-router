@@ -12,6 +12,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatStepperModule } from '@angular/material/stepper';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 @NgModule({
 	imports: [
@@ -28,6 +31,8 @@ import { MatStepperModule } from '@angular/material/stepper';
 		MatSelectModule,
 		MatDatepickerModule,
 		MatStepperModule,
+		MatFormFieldModule,
+		MatCheckboxModule,
 	],
 	exports: [
 		MatButtonModule, //
@@ -43,6 +48,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 		MatSelectModule,
 		MatDatepickerModule,
 		MatStepperModule,
+		MatFormFieldModule,
+		MatCheckboxModule,
 	],
+	providers: [provideNativeDateAdapter()],
 })
 export class MaterialModule {}

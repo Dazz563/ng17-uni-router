@@ -62,3 +62,26 @@ $ng17-uni-router-theme: mat.define-light-theme(
 @import 'styles/components/create-course-stepper';
 @import 'styles/components/course-step-1';
 @import 'styles/components/page-not-found';
+
+.mat-step-icon {
+	background-color: var(--color-primary) !important;
+	height: 34px !important;
+	width: 34px !important;
+	// padding: 19px !important;
+}
+
+.mat-horizontal-stepper-header {
+	padding: 19px !important;
+}
+
+.mat-calendar-header {
+	font-size: 1.4rem;
+}
+
+.mat-calendar-table-header {
+	font-size: 1.3rem;
+}
+
+.mat-calendar-body-label {
+	font-size: 1.3rem !important;
+}

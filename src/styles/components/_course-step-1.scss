@@ -1,6 +1,25 @@
 .course-step-1 {
-	.char-indicator {
-		text-align: right;
-		padding-right: 5px;
+	.message-set {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.date-message-set {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		mat-datepicker-toggle {
+			color: var(--color-primary);
+			margin-left: 0.5rem;
+		}
+	}
+
+	mat-form-field {
+		width: 100%;
+		padding: 0 3.7rem;
+	}
+
+	mat-checkbox {
+		padding-left: 2.8rem;
 	}
 }
