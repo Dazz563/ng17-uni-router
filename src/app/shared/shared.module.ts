@@ -6,6 +6,7 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { SafeUrlPipe } from './pipes/safe-url.pipe';
 import { MaterialModule } from './material.module';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
 	declarations: [
@@ -18,12 +19,14 @@ import { HttpClientModule } from '@angular/common/http';
 		MatProgressSpinnerModule,
 		MaterialModule,
 		HttpClientModule,
+		ReactiveFormsModule,
 	],
 	exports: [
 		MessagesComponent, //
 		LoadingComponent,
 		SafeUrlPipe,
 		MaterialModule,
+		ReactiveFormsModule,
 	],
 })
 export class SharedModule {}

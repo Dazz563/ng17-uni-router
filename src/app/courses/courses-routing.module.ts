@@ -8,11 +8,16 @@ import { LessonListComponent } from './lesson-list/lesson-list.component';
 import { LessonDetailResolver } from './services/lesson-detail.resolver';
 import { LessonsResolver } from './services/lessons.resolver';
 import { authGuard, authGuardChild } from '../services/auth.guard';
+import { CreateCourseComponent } from './create-course/create-course.component';
 
 const routes: Routes = [
 	{
 		path: '',
 		component: HomeComponent,
+	},
+	{
+		path: 'create-course',
+		component: CreateCourseComponent,
 	},
 	{
 		path: ':courseUrl',

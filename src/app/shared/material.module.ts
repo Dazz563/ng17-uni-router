@@ -11,6 +11,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatStepperModule } from '@angular/material/stepper';
 
 @NgModule({
 	imports: [
@@ -26,6 +27,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 		MatDialogModule,
 		MatSelectModule,
 		MatDatepickerModule,
+		MatStepperModule,
 	],
 	exports: [
 		MatButtonModule, //
@@ -40,6 +42,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 		MatDialogModule,
 		MatSelectModule,
 		MatDatepickerModule,
+		MatStepperModule,
 	],
 })
 export class MaterialModule {}

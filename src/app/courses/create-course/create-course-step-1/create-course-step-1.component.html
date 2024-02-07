@@ -1,0 +1,12 @@
+<div class="course-step-1" [formGroup]="form">
+	<div class="form-group">
+		<input #title type="text" formControlName="title" placeholder="Course title" [ngClass]="{'invalid': isInvalid('title'), 'valid': isValid('title')}" class="form-control text-md" />
+		<div class="text-sm char-indicator">{{ title.value.length }} / 60</div>
+		@if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
+			<div class="form-group__error">Title is required ***</div>
+		}
+		@if (courseTitle.errors?.['titleExists']) {
+			<div class="form-group__error">Title in use</div>
+		}
+	</div>
+</div>

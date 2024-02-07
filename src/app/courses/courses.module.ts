@@ -12,6 +12,10 @@ import { CoursesService } from './services/courses.service';
 import { SharedModule } from '../shared/shared.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
+import { CreateCourseComponent } from './create-course/create-course.component';
+import { CreateCourseStep1Component } from './create-course/create-course-step-1/create-course-step-1.component';
+import { CreateCourseStep2Component } from './create-course/create-course-step-2/create-course-step-2.component';
+import { CreateCourseStep3Component } from './create-course/create-course-step-3/create-course-step-3.component';
 
 @NgModule({
 	declarations: [
@@ -23,6 +27,10 @@ import { LessonDetailComponent } from './lesson-detail/lesson-detail.component';
 		LessonListComponent,
 		PageNotFoundComponent,
 		LessonDetailComponent,
+		CreateCourseComponent,
+		CreateCourseStep1Component,
+		CreateCourseStep2Component,
+		CreateCourseStep3Component,
 	],
 	imports: [
 		CommonModule, //
