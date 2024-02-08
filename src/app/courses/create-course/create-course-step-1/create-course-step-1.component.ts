@@ -17,6 +17,8 @@ interface CourseCategory {
 export class CreateCourseStep1Component implements OnInit {
 	constructor(private courses: CoursesService) {}
 
+	categories: CourseCategory[] = [];
+
 	form: FormGroup = new FormGroup({
 		title: new FormControl('', {
 			validators: [
@@ -28,13 +30,20 @@ export class CreateCourseStep1Component implements OnInit {
 			updateOn: 'blur',
 		}),
 		releaseDateAt: new FormControl('', Validators.required),
+		category: new FormControl('Select Category', Validators.required),
 		downloadsAllowed: new FormControl(false, Validators.requiredTrue),
 		longDescription: new FormControl('', [Validators.required, Validators.minLength(3)]),
 	});
 
 	courseCategories$: Observable<CourseCategory[]>;
 
-	ngOnInit(): void {}
+	ngOnInit(): void {
+		// this.courseCategories$ = this.courses.findCourseCategories();
+		this.courses.findCourseCategories().subscribe((categories) => {
+			console.log(categories);
+			this.categories = categories;
+		});
+	}
 
 	isInvalid(controlName: string): boolean {
 		const control = this.form.get(controlName);

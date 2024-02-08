@@ -5,6 +5,7 @@ import { searchLessons } from './search-lessons.route';
 import { saveCourse } from './save-course.route';
 import { loginUser } from './login.route';
 import { findLessonDetail } from './get-lesson-detail.route';
+import { getCourseCategories } from './course-categories.route';
 
 const bodyParser = require('body-parser');
 
@@ -17,6 +18,8 @@ app.use(cors({ origin: true }));
 app.use(bodyParser.json());
 
 app.route('/api/courses').get(getAllCourses);
+
+app.route('/api/course-categories').get(getCourseCategories);
 
 app.route('/api/courses/:id').get(getCourseByUrl);
 

@@ -1,7 +1,13 @@
 .course-step-1 {
-	.message-set {
-		display: flex;
-		justify-content: space-between;
+	.title-char-set {
+		position: relative;
+
+		.char-indicator {
+			position: absolute;
+			right: 0.6rem;
+			bottom: 0.9rem;
+			color: var(--color-grey-light-4);
+		}
 	}
 
 	.date-message-set {

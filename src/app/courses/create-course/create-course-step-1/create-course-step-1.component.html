@@ -1,19 +1,38 @@
 <div class="course-step-1" [formGroup]="form">
+	<!-- TITLE -->
 	<div class="form-group">
-		<input #title type="text" formControlName="title" placeholder="Course title" [ngClass]="{'invalid': isInvalid('title'), 'valid': isValid('title')}" class="form-control text-md" />
-		<div class="message-set">
-			@if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
-				<div class="form-group__error">Title is required ***</div>
-			}
-			@if (form.get('title')?.hasError('titleExists')) {
-				<div class="form-group__error">Title in use</div>
-			}
-			<div class="spacer"></div>
+		<div class="title-char-set">
+			<input #title type="text" formControlName="title" placeholder="Course title" [ngClass]="{'invalid': isInvalid('title'), 'valid': isValid('title')}" class="form-control text-md" />
 			<div class="text-sm char-indicator">{{ title.value.length }} / 60</div>
 		</div>
+
+		@if (form.get('title')?.hasError('required') && form.get('title')?.touched) {
+			<div class="form-group__error">Title is required ***</div>
+		}
+		@if (form.get('title')?.hasError('titleExists')) {
+			<div class="form-group__error">Title in use</div>
+		}
+		@if (form.get('title')?.hasError('minlength')) {
+			<div class="form-group__error">Minimum char 3</div>
+		}
 	</div>
 
+	<!-- CATEGORIES -->
 	<div class="form-group">
+		<select formControlName="category" class="form-control" [ngClass]="{'invalid': isInvalid('category'), 'valid': isValid('category')}">
+			<option disabled selected>Select Category</option>
+			@for (category of categories; track $index) {
+				<option [value]="category.code">{{ category.description }}</option>
+			}
+		</select>
+		<i class="bx bx-chevron-down icon-select"></i>
+		@if (form.get('category')?.hasError('required') && form.get('category')?.touched) {
+			<div class="form-group__error">Category is required ***</div>
+		}
+	</div>
+
+	<!-- RELEASE DATE -->
+	<div class="form-group" style="margin-top: -6px;">
 		<div class="date-message-set">
 			<input formControlName="releaseDateAt" [matDatepicker]="picker" type="text" placeholder="Release date" [ngClass]="{'invalid': isInvalid('releaseDateAt'), 'valid': isValid('releaseDateAt')}" class="form-control text-md" />
 			<mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
@@ -24,6 +43,7 @@
 		}
 	</div>
 
+	<!-- DOWNLOADS ALLOWED -->
 	<div>
 		<mat-checkbox formControlName="downloadsAllowed" color="primary">Downloads allowed</mat-checkbox>
 		@if (form.get('downloadsAllowed')?.hasError('requiredTrue') && form.get('downloadsAllowed')?.touched) {
@@ -31,6 +51,7 @@
 		}
 	</div>
 
+	<!-- DESCRIPTION -->
 	<div class="form-group">
 		<textarea formControlName="longDescription" class="form-control-textarea" name="description" placeholder="Description" cols="50" rows="10" [ngClass]="{'invalid': isInvalid('longDescription'), 'valid': isValid('longDescription')}"></textarea>
 		@if (form.get('longDescription')?.hasError('required') && form.get('longDescription')?.touched) {

@@ -1,4 +1,5 @@
 .form-group {
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	width: 90%;
@@ -21,6 +22,10 @@
 		}
 
 		&::placeholder {
+			color: var(--color-grey-light-4);
+		}
+
+		&:disabled {
 			color: var(--color-grey-light-4);
 		}
 
@@ -76,5 +81,20 @@
 		color: red;
 		font-size: 1.1rem;
 		padding: 0.5rem 0 0 0.5rem;
+	}
+
+	select.form-control {
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		/* Add any additional styling here */
+
+		&.invalid {
+			border-color: rgb(255, 107, 107);
+		}
+
+		&.valid {
+			border-color: #9bf79b;
+		}
 	}
 }

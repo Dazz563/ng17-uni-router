@@ -2,10 +2,10 @@
 	<mat-horizontal-stepper [linear]="true" class="mat-elevation-z5" labelPosition="bottom">
 		<!-- STEP 1 -->
 		<mat-step [stepControl]="step1.form">
-			<ng-template matStepLabel>Course landing page details</ng-template>
+			<ng-template matStepLabel>Course page details</ng-template>
 			<app-create-course-step-1 #step1></app-create-course-step-1>
 
-			<div class="stepper-buttons">
+			<div class="stepper-buttons right-text">
 				<button (click)="checkStep1Validity(step1.form)" class="btn btn-primary" matStepperNext>Step 2</button>
 			</div>
 		</mat-step>
@@ -14,7 +14,7 @@
 			<ng-template matStepLabel>Course pricing details</ng-template>
 			<app-create-course-step-2 #step2></app-create-course-step-2>
 
-			<div class="stepper-buttons">
+			<div class="stepper-buttons flex flex-center flex-space-between">
 				<button class="btn btn-primary" matStepperPrevious>Back</button>
 				<button class="btn btn-primary" matStepperNext>Step 3</button>
 			</div>

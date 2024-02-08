@@ -10,6 +10,10 @@ import { LessonSummary } from '../model/lesson-summary';
 export class CoursesService {
 	constructor(private http: HttpClient) {}
 
+	findCourseCategories() {
+		return this.http.get(`/api/course-categories`).pipe(map((res) => res['categories']));
+	}
+
 	findAllCourses(): Observable<Course[]> {
 		return this.http.get('/api/courses').pipe(map((res) => res['payload']));
 	}

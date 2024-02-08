@@ -2,6 +2,24 @@
 	text-align: center;
 }
 
+.right-text {
+	text-align: right;
+}
+
+.flex {
+	display: flex;
+	// justify-content: center;
+	// align-items: center;
+}
+
+.flex-center {
+	align-items: center;
+}
+
+.flex-space-between {
+	justify-content: space-between;
+}
+
 .cursor-pointer {
 	cursor: pointer;
 }
