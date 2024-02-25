@@ -1,0 +1,42 @@
+---
+- name: Build Angular project and copy compiled files to desktop with .htaccess
+  hosts: localhost
+  gather_facts: false
+
+  vars:
+      ansible_env:
+          PWD: '/Users/darrennienaber/Developer/private/angular/courses/ng17-uni-router'
+
+  tasks:
+      - name: Clean public_html directory (excluding .git)
+        ansible.builtin.shell:
+            cmd: |
+                cd ~/Desktop/public_html
+                find . -depth -type d -name '.git' -prune -o -delete
+
+      - name: Build Angular project
+        ansible.builtin.command: ng build --delete-output-path=true
+        args:
+            chdir: '{{ ansible_env.PWD }}'
+
+      - name: Determine project name
+        ansible.builtin.set_fact:
+            project_name: '{{ ansible_env.PWD | basename }}'
+
+      - name: Create new_build directory on desktop
+        ansible.builtin.file:
+            path: ~/Desktop/public_html
+            state: directory
+
+      - name: Copy compiled files to desktop
+        ansible.builtin.shell:
+            cp -r "{{ ansible_env.PWD }}/dist/"* ~/Desktop/public_html/
+
+      - name: Move browser directory contents to parent
+        ansible.builtin.shell:
+            rsync -a ~/Desktop/public_html/browser/ ~/Desktop/public_html/
+
+      - name: Delete empty browser directory
+        ansible.builtin.file:
+            path: ~/Desktop/public_html/browser
+            state: absent

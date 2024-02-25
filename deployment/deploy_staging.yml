@@ -1,0 +1,98 @@
+- name: Copy Bluverve Angular project to server with .htaccess
+  hosts: staging_server
+  gather_facts: false
+
+  tasks:
+      - name: Clean public_html directory (excluding .git) on server
+        ansible.builtin.shell:
+            cmd: |
+                cd "{{ staging_server_dest }}"
+                find . -depth -type d -name '.git' -prune -o -delete
+
+      - name: Copy compiled files to server
+        ansible.builtin.copy:
+            src: '{{ project_dir }}/dist/'
+            dest: '{{ staging_server_dest }}'
+
+      - name: Move contents of browser directory to parent public_html directory
+        ansible.builtin.shell:
+            cmd: |
+                cd "{{ staging_server_dest }}/browser"
+                shopt -s dotglob
+                mv -- * ../
+
+      - name: Create .htaccess file in public_html directory
+        ansible.builtin.copy:
+            content: |
+                RewriteEngine On
+                # If an existing asset or directory is requested go to it as it is
+                RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+                RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+                RewriteRule ^ - [L]
+                # If the requested resource doesn't exist, use index.html
+                RewriteRule ^ /index.html
+            dest: '{{ staging_server_dest }}/.htaccess'
+
+      - name: Remove browser directory on server
+        ansible.builtin.file:
+            path: '{{ staging_server_dest }}/browser'
+            state: absent
+# below are optional tasks to remove the browser directory and its contents which are not working presently (for later investigation but can be removed)
+
+# - name:
+#       Copy hidden files from browser directory to parent public_html
+#       directory
+#   ansible.builtin.shell:
+#       cmd:
+#           "rsync -av --exclude='.git' --exclude='.*' '{{ server_dest
+#           }}/browser/' '{{ server_dest }}/'"
+
+# - name:
+#       Copy hidden files from browser directory to parent public_html
+#       directory
+#   ansible.builtin.shell:
+#       cmd:
+#           "rsync -av --exclude='.*' '{{ server_dest }}/browser/.' '{{
+#           server_dest }}/'"
+
+# - name: Move browser directory contents to parent
+#   ansible.builtin.shell:
+#       rsync -av {{ server_dest }}/browser {{ server_dest }}
+
+# - name: Move browser directory contents to parent
+#   ansible.builtin.rsync:
+#       src: '{{ server_dest }}/browser/'
+#       dest: '{{ server_dest }}'
+#       archive: yes
+#       flags: '-av'
+#       delegate_to: localhost
+
+# - name: Move browser directory contents to parent
+#   ansible.builtin.shell:
+#       cmd: |
+#           cd "{{ server_dest }}"
+#           find browser/ -maxdepth 1 -exec mv -t .. '{}' +
+
+# - name: Move browser directory contents to parent on server (optional)
+#   ansible.builtin.file:
+#       src: '{{ server_dest }}/browser/'
+#       dest: '{{ server_dest }}'
+#       state: absent
+
+# - name: Move browser directory contents to parent on server (optional)
+#   ansible.builtin.shell:
+#       cmd: |
+#           cd "{{ server_dest }}"
+#           find browser/ -maxdepth 1 -exec mv -t .. '{}' +
+
+# - name: Remove browser directory on server (optional)
+#   ansible.builtin.file:
+#       src: '{{ server_dest }}/browser/'
+#       state: absent
+
+# - name: Delete empty browser directory on server (optional)
+#   ansible.builtin.file:
+#       path: '{{ server_dest }}/browser'
+#       state: absent
+# ... other tasks (optional)
+

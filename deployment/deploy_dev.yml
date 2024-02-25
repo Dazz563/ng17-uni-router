@@ -1,0 +1,41 @@
+- name: Copy Bluverve Angular project to server with .htaccess
+  hosts: dev_server
+  gather_facts: false
+
+  tasks:
+      - name: Clean public_html directory (excluding .git) on server
+        ansible.builtin.shell:
+            cmd: |
+                cd "{{ dev_server_dest }}"
+                find . -depth -type d -name '.git' -prune -o -delete
+
+      - name: Copy compiled files to server
+        ansible.builtin.copy:
+            src: '{{ project_dir }}/dist/'
+            dest: '{{ dev_server_dest }}'
+
+      - name: Move contents of browser directory to parent public_html directory
+        ansible.builtin.shell:
+            cmd: |
+                cd "{{ dev_server_dest }}/browser"
+                shopt -s dotglob
+                mv -- * ../
+
+      - name: Create .htaccess file in public_html directory
+        ansible.builtin.copy:
+            content: |
+                RewriteEngine On
+                # If an existing asset or directory is requested go to it as it is
+                RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+                RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+                RewriteRule ^ - [L]
+                # If the requested resource doesn't exist, use index.html
+                RewriteRule ^ /index.html
+            dest: '{{ dev_server_dest }}/.htaccess'
+
+      - name: Remove browser directory on server
+        ansible.builtin.file:
+            path: '{{ dev_server_dest }}/browser'
+            state: absent
+# below are optional tasks to remove the browser directory and its contents which are not working presently (for later investigation but can be removed)
+
