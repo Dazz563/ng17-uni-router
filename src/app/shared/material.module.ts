@@ -15,10 +15,11 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { provideNativeDateAdapter } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
 
 @NgModule({
 	imports: [
-		MatButtonModule, //
+		MatButtonModule,
 		MatIconModule,
 		MatCardModule,
 		MatTabsModule,
@@ -33,9 +34,10 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 		MatStepperModule,
 		MatFormFieldModule,
 		MatCheckboxModule,
+		MatRadioModule,
 	],
 	exports: [
-		MatButtonModule, //
+		MatButtonModule,
 		MatIconModule,
 		MatCardModule,
 		MatTabsModule,
@@ -50,6 +52,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 		MatStepperModule,
 		MatFormFieldModule,
 		MatCheckboxModule,
+		MatRadioModule,
 	],
 	providers: [provideNativeDateAdapter()],
 })

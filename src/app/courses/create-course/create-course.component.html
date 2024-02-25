@@ -1,7 +1,7 @@
 <div class="stepper-container">
-	<mat-horizontal-stepper [linear]="true" class="mat-elevation-z5" labelPosition="bottom">
+	<mat-horizontal-stepper [linear]="false" class="mat-elevation-z5" labelPosition="bottom">
 		<!-- STEP 1 -->
-		<mat-step [stepControl]="step1.form">
+		<mat-step [stepControl]="step1.form" errorMessage="Course page details in error">
 			<ng-template matStepLabel>Course page details</ng-template>
 			<app-create-course-step-1 #step1></app-create-course-step-1>
 
@@ -10,7 +10,7 @@
 			</div>
 		</mat-step>
 		<!-- STEP 2 -->
-		<mat-step>
+		<mat-step errorMessage="Pricing page in error">
 			<ng-template matStepLabel>Course pricing details</ng-template>
 			<app-create-course-step-2 #step2></app-create-course-step-2>
 

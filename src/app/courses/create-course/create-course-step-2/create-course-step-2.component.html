@@ -1,1 +1,25 @@
-<p>create-course-step-2 works!</p>
+<div class="course-step-2" [formGroup]="form">
+	<!-- FREE OR PREMIUM -->
+	<mat-radio-group color="primary" formControlName="courseType">
+		<mat-radio-button value="free">Free</mat-radio-button>
+		<mat-radio-button value="premium">Premium</mat-radio-button>
+	</mat-radio-group>
+
+	<!-- PRICE -->
+	<div class="form-group">
+		<input #title type="number" formControlName="price" placeholder="Price" [ngClass]="{'invalid': isInvalid('price'), 'valid': isValid('price')}" class="form-control text-md" />
+		@if (form.get('price')?.hasError('required') && form.get('title')?.touched) {
+			<div class="form-group__error">Price is required ***</div>
+		}
+	</div>
+
+	<!-- RELEASE DATE -->
+
+	<!-- DOWNLOADS ALLOWED -->
+
+	<!-- DESCRIPTION -->
+
+	<div>
+		{{ form.value | json}}
+	</div>
+</div>

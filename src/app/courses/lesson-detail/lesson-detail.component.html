@@ -1,4 +1,9 @@
-<div class="back text-sm cursor-pointer center-text mt-3" [routerLink]="['../..']">Back To Course</div>
+<div
+	class="back text-sm cursor-pointer center-text mt-3"
+	[routerLink]="['../..']"
+>
+	Back To Course
+</div>
 
 <div class="lesson-detail" *ngIf="(lesson$ | async) as lesson">
 	<div class="text-xl m-2 center-text">{{lesson.description}}</div>
@@ -6,10 +11,28 @@
 	<div class="text-lg m-2 center-text">Duration: {{lesson.duration}}</div>
 
 	<div class="video-container">
-		<mat-icon class="nav-button" *ngIf="!lesson.first" (click)="previous(lesson)"> navigate_before </mat-icon>
+		<mat-icon
+			class="nav-button"
+			*ngIf="!lesson.first"
+			(click)="previous(lesson)"
+		>
+			navigate_before
+		</mat-icon>
 
-		<iframe width="400" height="220" frameborder="0" allowfullscreen [src]="('https://www.youtube.com/embed/' + lesson?.videoId) | safeUrl"> </iframe>
+		<iframe
+			width="400"
+			height="220"
+			frameborder="0"
+			allowfullscreen
+			[src]="('https://www.youtube.com/embed/' + lesson?.videoId) | safeUrl"
+		></iframe>
 
-		<mat-icon class="nav-button" *ngIf="!lesson.last" (click)="next(lesson)"> navigate_next </mat-icon>
+		<mat-icon
+			class="nav-button"
+			*ngIf="!lesson.last"
+			(click)="next(lesson)"
+		>
+			navigate_next
+		</mat-icon>
 	</div>
 </div>
