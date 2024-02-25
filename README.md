@@ -44,4 +44,8 @@ Git Tagging Process
 2. Push tags to the remote repository `git push origin v1.0.0`
 3. Delete a tag `git tag -d v1.0.0` and `git push origin :refs/tags/v1.0.0`
 
-Just another sentence One more tag for good luck
+Just another sentence One more tag for good luck Last sentence to register as a release
+
+```
+
+```
