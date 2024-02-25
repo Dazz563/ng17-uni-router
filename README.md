@@ -31,6 +31,8 @@ need to first add a package that implements end-to-end testing capabilities.
 To get more help on the Angular CLI use `ng help` or go check out the
 [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
-This is just a tagging test
+Git Tagging Process
 
-Just another tag for testing
+1. Create a new tag `git tag -a v1.0.0 -m "Version 1.0.0"`
+2. Push tags to the remote repository `git push origin v1.0.0`
+3. Delete a tag `git tag -d v1.0.0` and `git push origin :refs/tags/v1.0.0`
