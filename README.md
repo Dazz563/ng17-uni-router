@@ -31,6 +31,13 @@ need to first add a package that implements end-to-end testing capabilities.
 To get more help on the Angular CLI use `ng help` or go check out the
 [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
 
+Pre git tagging process
+
+1. Create new branch `git checkout -b feature/branch-name`
+2. Commit changes `git commit -m "Commit message"`
+3. Push changes to the remote repository `git push origin feature/branch-name`
+4. Create a pull request to merge the feature branch into the main branch
+
 Git Tagging Process
 
 1. Create a new tag `git tag -a v1.0.0 -m "Version 1.0.0"`
